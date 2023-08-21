@@ -1,27 +1,14 @@
 <script setup>
 import { RouterLink, RouterView } from 'vue-router'
-import HelloWorld from './components/HelloWorld.vue'
-import MovieCard from './components/MovieCard.vue';
+import HomeView from './views/HomeView.vue';
+
 </script>
 
 <template>
-
    <header>
-    <img alt="Vue logo" class="logo" src="@/assets/image/logo.jpg" width="125" height="125" />
-
+    <img alt="Vue logo" class="logo" src="@/assets/image/logo.svg"/>
    </header>
-    
-
-
-    <div class="wrapper">
-      <nav>
-        <RouterLink to="/">Home</RouterLink>
-        <RouterLink to="/about">About</RouterLink>
-      </nav>
-    </div>
-  
-
-  <MovieCard />
+  <HomeView/>
 </template>
 
 <style scoped>
