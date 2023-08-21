@@ -1,9 +1,27 @@
 <script setup>
-import TheWelcome from '../components/TheWelcome.vue'
+import MovieCard from '../components/MovieCard.vue';
+import InputForm from '../components/InputForm.vue';
 </script>
 
 <template>
   <main>
-    <TheWelcome />
+    
+      
+      <HelloWorld/>
+      <InputForm/>
+      <div class="MoviesWatch">
+        <RouterLink to="/">Unwatched Movies</RouterLink>
+        <RouterLink to="/about">Watched Movies</RouterLink>
+     </div>
+      <MovieCard/>
+    
+  
   </main>
 </template>
+<style scoped>
+.MoviesWatch{
+  display: flex;
+  justify-content: center;
+  gap: 5em;
+}
+</style>
