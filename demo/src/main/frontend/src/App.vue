@@ -7,21 +7,19 @@ import MovieCard from './components/MovieCard.vue';
 <template>
 
    <header>
-    <img alt="Vue logo" class="logo" src="@/assets/logo.svg" width="125" height="125" />
+    <img alt="Vue logo" class="logo" src="@/assets/image/logo.jpg" width="125" height="125" />
 
-  <header>
-    <img class="logo" src="./assets/image/logo.jpg" alt="">
+   </header>
+    
 
 
     <div class="wrapper">
-      <HelloWorld msg="You did it!" />
-
       <nav>
         <RouterLink to="/">Home</RouterLink>
         <RouterLink to="/about">About</RouterLink>
       </nav>
     </div>
-  </header> 
+  
 
   <MovieCard />
 </template>
