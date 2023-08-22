@@ -24,12 +24,24 @@ public class Film {
     @Column(name = "genre", nullable = false)
     private String genre;
 
+    @Column(name = "director", nullable = false)
+    private String director;
+
     public Film(Long id, String title, int date, String genre) {
         super();
         this.id = id;
         this.title = title;
         this.date = date;
         this.genre = genre;
+
+    }
+
+    public Film(String title, int date, String genre, String director) {
+        super();
+        this.title = title;
+        this.date = date;
+        this.genre = genre;
+        this.director = director;
     }
 
     public String getTitle() {
@@ -54,6 +66,14 @@ public class Film {
 
     public void setGenre(String genre) {
         this.genre = genre;
+    }
+
+    public String GetDirector() {
+        return director;
+    }
+
+    public void SetDirector(String director) {
+        this.director = director;
     }
 
 }
