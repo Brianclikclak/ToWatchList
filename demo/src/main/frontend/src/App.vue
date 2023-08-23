@@ -1,12 +1,13 @@
 <script setup>
 import { RouterLink, RouterView } from 'vue-router'
 import HelloWorld from './components/HelloWorld.vue'
+import Radios from './components/Radios.vue';
 </script>
 
 <template>
   <header>
     <img class="logo" src="./assets/image/logo.jpg" alt="">
-
+    <Radios/> 
     <div class="wrapper">
       <HelloWorld msg="You did it!" />
 
