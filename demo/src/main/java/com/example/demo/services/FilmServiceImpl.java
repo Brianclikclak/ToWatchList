@@ -12,12 +12,12 @@ import com.example.demo.repository.FilmRespository;
 public class FilmServiceImpl implements FilmService {
 
     @Autowired
-    private FilmRespository respository;
+    private FilmRespository repository;
 
     @Override
     public List<Film> listAllFilms() {
 
-        return respository.findAll();
+        return repository.findAll();
     }
 
 }

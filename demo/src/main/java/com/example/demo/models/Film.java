@@ -27,21 +27,18 @@ public class Film {
     @Column(name = "director", nullable = false)
     private String director;
 
-    public Film(Long id, String title, int date, String genre) {
+    public Film(Long id, String title, int date, String genre, String director) {
         super();
         this.id = id;
         this.title = title;
         this.date = date;
         this.genre = genre;
+        this.director = director;
 
     }
 
-    public Film(String title, int date, String genre, String director) {
-        super();
-        this.title = title;
-        this.date = date;
-        this.genre = genre;
-        this.director = director;
+    public Film() {
+
     }
 
     public String getTitle() {
