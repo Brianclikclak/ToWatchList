@@ -65,11 +65,11 @@ public class Film {
         this.genre = genre;
     }
 
-    public String GetDirector() {
+    public String setDirector() {
         return director;
     }
 
-    public void SetDirector(String director) {
+    public void setDirector(String director) {
         this.director = director;
     }
 

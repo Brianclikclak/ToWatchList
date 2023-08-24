@@ -1,6 +1,5 @@
 package com.example.demo.services;
 
-import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,13 +14,6 @@ public class FilmServiceImpl implements FilmService {
 
     @Autowired
     private FilmRepository filmrepository;
-
-    @Override
-
-    @Transactional
-    public List<Film> listAllFilms() {
-        return filmrepository.listAllFilms();
-    }
 
     @Override
     @Transactional(readOnly = true)
