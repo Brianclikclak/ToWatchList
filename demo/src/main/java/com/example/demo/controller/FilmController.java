@@ -1,6 +1,9 @@
 package com.example.demo.controller;
 
+import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
+import java.util.stream.StreamSupport;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -19,11 +22,18 @@ import com.example.demo.services.FilmService;
 public class FilmController {
 
     @Autowired
-    private FilmService service;
+    private FilmService filmService;
 
     @GetMapping("/{id}")
     public Optional<Film> getFilmById(@PathVariable Long id) {
-        return service.findById(id);
+        return filmService.findById(id);
+    }
+
+    @GetMapping
+    public List<Film> readAll() {
+        return StreamSupport
+                .stream(filmService.findAll().spliterator(), false)
+                .collect(Collectors.toList());
     }
 
 }
