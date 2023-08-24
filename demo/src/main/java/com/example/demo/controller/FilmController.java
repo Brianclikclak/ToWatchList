@@ -1,6 +1,5 @@
 package com.example.demo.controller;
 
-import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,11 +20,6 @@ public class FilmController {
 
     @Autowired
     private FilmService service;
-
-    @GetMapping({ "/films" })
-    public List<Film> listFilms() {
-        return service.listAllFilms();
-    }
 
     @GetMapping("/{id}")
     public Optional<Film> getFilmById(@PathVariable Long id) {
