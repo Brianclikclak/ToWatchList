@@ -45,8 +45,8 @@ public class FilmController {
     }
 
     @PutMapping("/{id}")
-    public Film updateByFilm(@PathVariable Long id, @RequestBody Film filmDetails) {
-        return filmService.updateByFilm(id, filmDetails);
+    public Film updateFilmById(@PathVariable Long id, @RequestBody Film filmDetails) {
+        return filmService.updateFilmById(id, filmDetails);
     }
 
     @DeleteMapping("/{id}")
