@@ -40,13 +40,14 @@ public class FilmServiceImpl implements FilmService {
 
     @Override
     public Film updateFilmById(Long id, Film filmDetails) {
-        filmDetails.setId(id);
+
         filmDetails.setTitle(filmDetails.getTitle());
         filmDetails.setDate(filmDetails.getDate());
         filmDetails.setGenre(filmDetails.getGenre());
         filmDetails.setDirector(filmDetails.getDirector());
 
-        return filmrepository.save(filmDetails);
+        filmrepository.save(filmDetails);
+        return filmDetails;
     }
 
 
