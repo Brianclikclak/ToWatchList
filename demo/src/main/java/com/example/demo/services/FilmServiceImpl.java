@@ -38,4 +38,28 @@ public class FilmServiceImpl implements FilmService {
         filmrepository.deleteById(id);
     }
 
+    @Override
+    public Film updateFilmById(Long id, Film filmDetails) {
+        filmDetails.setId(id);
+        filmDetails.setTitle(filmDetails.getTitle());
+        filmDetails.setDate(filmDetails.getDate());
+        filmDetails.setGenre(filmDetails.getGenre());
+        filmDetails.setDirector(filmDetails.getDirector());
+
+        return filmrepository.save(filmDetails);
+    }
+
+
+//    public Film update(@RequestBody Film filmDetails, @PathVariable(value = "id") Long userId) {
+//
+//        filmDetails.setTitle(filmDetails.getTitle());
+//        filmDetails.setDate(filmDetails.getDate());
+//        filmDetails.setGenre(filmDetails.getGenre());
+//        filmDetails.setDirector(filmDetails.getDirector());
+//
+//        return filmDetails.body(filmService.save(Film.get()));
+//    }
+
+
+
 }

@@ -41,6 +41,8 @@ public class Film {
 
     }
 
+    public void setId(Long id) {
+    }
     public String getTitle() {
         return title;
     }
@@ -72,5 +74,6 @@ public class Film {
     public void setDirector(String director) {
         this.director = director;
     }
+
 
 }

@@ -7,19 +7,14 @@ import java.util.stream.StreamSupport;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import com.example.demo.models.Film;
 import com.example.demo.services.FilmService;
 
 @RestController
-@RequestMapping
+@RequestMapping("/films")
+@CrossOrigin("*")
 
 @Controller
 public class FilmController {
@@ -46,15 +41,9 @@ public class FilmController {
     }
 
     @PutMapping("/{id}")
-    public Film update(@RequestBody Film filmDetails, @PathVariable(value = "id") Long userId) {
+    public Film updateFilmById(@PathVariable Long id, @RequestBody Film filmDetails) {
+        return (filmService.updateFilmById(id, filmDetails));
+    };
 
-        filmDetails.setTitle(filmDetails.getTitle());
-        filmDetails.setDate(filmDetails.getDate());
-        filmDetails.setGenre(filmDetails.getGenre());
-        filmDetails.setDirector(filmDetails.getDirector());
-
-        return filmDetails.body(filmService.save(Film.get()));
-
-    }
 
 }
