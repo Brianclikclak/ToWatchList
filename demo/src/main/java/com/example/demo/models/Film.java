@@ -46,8 +46,16 @@ public class Film {
     public Long getId() {
         return id;
     }
+
+
+    public void setId(Long id) {
+
+    }
+
+
     public void setId(Long id) {
     }
+
     public String getTitle() {
         return title;
     }

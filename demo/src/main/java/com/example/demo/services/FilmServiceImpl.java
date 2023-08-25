@@ -1,5 +1,6 @@
 package com.example.demo.services;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,12 +18,12 @@ public class FilmServiceImpl implements FilmService {
 
     @Override
     @Transactional(readOnly = true)
-    public Iterable<Film> findAll() {
+    public List<Film> findAll() {
         return filmrepository.findAll();
     }
 
     @Override
-    @Transactional
+    @Transactional(readOnly = true)
     public Optional<Film> findById(Long id) {
         return filmrepository.findById(id);
     }
@@ -39,6 +40,25 @@ public class FilmServiceImpl implements FilmService {
     }
 
     @Override
+
+    @Transactional
+    public Film updateFilmById(Long id, Film filmDetails) {
+        Optional<Film> optionalFilm = findById(id);
+
+        if (optionalFilm.isPresent()) {
+            Film film = optionalFilm.get();
+            film.setTitle(filmDetails.getTitle());
+            film.setDate(filmDetails.getDate());
+            film.setGenre(filmDetails.getGenre());
+            film.setDirector(filmDetails.getDirector());
+            return save(film);
+        } else {
+
+            return null;
+        }
+    }
+
+
     public Film updateFilmById(Long id, Film filmDetails) {
 
         filmDetails.setTitle(filmDetails.getTitle());
@@ -51,15 +71,6 @@ public class FilmServiceImpl implements FilmService {
     }
 
 
-//    public Film update(@RequestBody Film filmDetails, @PathVariable(value = "id") Long userId) {
-//
-//        filmDetails.setTitle(filmDetails.getTitle());
-//        filmDetails.setDate(filmDetails.getDate());
-//        filmDetails.setGenre(filmDetails.getGenre());
-//        filmDetails.setDirector(filmDetails.getDirector());
-//
-//        return filmDetails.body(filmService.save(Film.get()));
-//    }
 
 
 
