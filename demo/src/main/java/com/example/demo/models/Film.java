@@ -45,7 +45,7 @@ public class Film {
         return title;
     }
 
-    public void setTittle(String title) {
+    public void setTitle(String title) {
         this.title = title;
     }
 
@@ -65,7 +65,7 @@ public class Film {
         this.genre = genre;
     }
 
-    public String setDirector() {
+    public String getDirector() {
         return director;
     }
 
