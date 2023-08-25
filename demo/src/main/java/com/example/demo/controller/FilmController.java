@@ -16,9 +16,6 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import org.springframework.web.bind.annotation.*;
-
-
 import com.example.demo.models.Film;
 import com.example.demo.services.FilmService;
 
@@ -54,17 +51,9 @@ public class FilmController {
         return filmService.updateFilmById(id, filmDetails);
     }
 
-        return (filmService.updateFilmById(id, filmDetails));
-    };
-
-    @DeleteMapping("/{id}")
-    public void deleteById(@PathVariable Long id){
-        filmService.deleteById(id);
-    };
-
-
     @DeleteMapping("/{id}")
     public void deleteById(@PathVariable Long id) {
         filmService.deleteById(id);
-    };
+    }
+
 }
