@@ -58,20 +58,4 @@ public class FilmServiceImpl implements FilmService {
         }
     }
 
-
-    public Film updateFilmById(Long id, Film filmDetails) {
-
-        filmDetails.setTitle(filmDetails.getTitle());
-        filmDetails.setDate(filmDetails.getDate());
-        filmDetails.setGenre(filmDetails.getGenre());
-        filmDetails.setDirector(filmDetails.getDirector());
-
-        filmrepository.save(filmDetails);
-        return filmDetails;
-    }
-
-
-
-
-
 }
