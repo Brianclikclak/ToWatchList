@@ -41,7 +41,7 @@ public class FilmServiceImpl implements FilmService {
 
     @Override
     @Transactional
-    public Film updateFilm(Long id, Film filmDetails) {
+    public Film updateByFilmId(Long id, Film filmDetails) {
         Optional<Film> optionalFilm = findById(id);
 
         if (optionalFilm.isPresent()) {
