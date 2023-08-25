@@ -13,7 +13,7 @@ public interface FilmService {
 
     public Film save(Film film);
 
-    public Film updateByFilm(Long id, Film filmDetails);
+    public Film updateFilmById(Long id, Film filmDetails);
 
     public void deleteById(Long id);
 
