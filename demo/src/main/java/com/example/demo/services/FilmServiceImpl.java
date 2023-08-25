@@ -40,6 +40,7 @@ public class FilmServiceImpl implements FilmService {
     }
 
     @Override
+
     @Transactional
     public Film updateFilmById(Long id, Film filmDetails) {
         Optional<Film> optionalFilm = findById(id);
@@ -56,5 +57,21 @@ public class FilmServiceImpl implements FilmService {
             return null;
         }
     }
+
+
+    public Film updateFilmById(Long id, Film filmDetails) {
+
+        filmDetails.setTitle(filmDetails.getTitle());
+        filmDetails.setDate(filmDetails.getDate());
+        filmDetails.setGenre(filmDetails.getGenre());
+        filmDetails.setDirector(filmDetails.getDirector());
+
+        filmrepository.save(filmDetails);
+        return filmDetails;
+    }
+
+
+
+
 
 }

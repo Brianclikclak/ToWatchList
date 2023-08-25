@@ -27,6 +27,8 @@ public class Film {
     @Column(name = "director", nullable = false)
     private String director;
 
+
+
     public Film(Long id, String title, int date, String genre, String director) {
         super();
         this.id = id;
@@ -45,8 +47,13 @@ public class Film {
         return id;
     }
 
+
     public void setId(Long id) {
 
+    }
+
+
+    public void setId(Long id) {
     }
 
     public String getTitle() {
@@ -80,5 +87,6 @@ public class Film {
     public void setDirector(String director) {
         this.director = director;
     }
+
 
 }

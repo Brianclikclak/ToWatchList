@@ -5,6 +5,7 @@ import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -14,6 +15,9 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+
+import org.springframework.web.bind.annotation.*;
+
 
 import com.example.demo.models.Film;
 import com.example.demo.services.FilmService;
@@ -46,8 +50,18 @@ public class FilmController {
 
     @PutMapping("/{id}")
     public Film updateFilmById(@PathVariable Long id, @RequestBody Film filmDetails) {
+
         return filmService.updateFilmById(id, filmDetails);
     }
+
+        return (filmService.updateFilmById(id, filmDetails));
+    };
+
+    @DeleteMapping("/{id}")
+    public void deleteById(@PathVariable Long id){
+        filmService.deleteById(id);
+    };
+
 
     @DeleteMapping("/{id}")
     public void deleteById(@PathVariable Long id) {
