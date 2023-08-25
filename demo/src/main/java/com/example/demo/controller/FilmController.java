@@ -2,8 +2,6 @@ package com.example.demo.controller;
 
 import java.util.List;
 import java.util.Optional;
-import java.util.stream.Collectors;
-import java.util.stream.StreamSupport;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -40,21 +38,11 @@ public class FilmController {
 
     @GetMapping
     public List<Film> readAll() {
-        return StreamSupport
-                .stream(filmService.findAll().spliterator(), false)
-                .collect(Collectors.toList());
+        return filmService.findAll();
     }
 
-    @PutMapping("/{id}")
-    public Film update(@RequestBody Film filmDetails, @PathVariable(value = "id") Long userId) {
-
-        filmDetails.setTitle(filmDetails.getTitle());
-        filmDetails.setDate(filmDetails.getDate());
-        filmDetails.setGenre(filmDetails.getGenre());
-        filmDetails.setDirector(filmDetails.getDirector());
-
-        return filmDetails.body(filmService.save(Film.get()));
-
+    @PutMapping("/update/{id}")
+    public Film updateFilm(@PathVariable Long id, @RequestBody Film filmDetails) {
+        return filmService.updateFilm(id, filmDetails);
     }
-
 }
