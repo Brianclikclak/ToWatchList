@@ -11,7 +11,7 @@ class FilmDataService {
     }
     
     create(data) {
-        return http.post(`/films/`, data);
+        return http.post(``, data);
     }
     
     update(id, data) {
@@ -19,7 +19,7 @@ class FilmDataService {
     }
     
     delete(id) {
-        return http.delete(`/films/delete/${id}`);
+        return http.delete(`${id}`);
     }
 }
 

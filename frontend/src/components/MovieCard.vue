@@ -15,9 +15,22 @@ function getFilms() {
         });
 }
 
+function deleteMovie(id){
+    FilmDataService.delete(id)
+      .then(response => {
+        console.log(response);
+        getFilms();
+      })
+      .catch(error => {
+        console.log(error);
+      })
+}
+
 onBeforeMount(() => {
     getFilms();
 })
+
+
 
 </script>
 
@@ -30,11 +43,11 @@ onBeforeMount(() => {
             <div class="card-body ">
                 <p class="card-text" id="year">{{ film.date}}</p>
                 <p class="card-text" id="genre">{{ film.genre }}</p>
-                <p class="card-text" id="whereToWatch">Where to watch</p>
+                <p class="card-text" id="whereToWatch">{{ film.director }}</p>
             </div>
             <div class="card-footer text-muted d-flex justify-content-evenly">
                 <a href="#" class="btn btn-primary">Edit</a>
-                <a href="#" class="btn btn-danger">Delete</a>
+                <a href="#" class="btn btn-danger" @click= "() => deleteMovie(film.id)"> Delete</a>
             </div>
         </div>
     </div>
