@@ -4,10 +4,14 @@ import InputForm from '../components/InputForm.vue';
 </script>
 
 <template>
+  
   <main>
+    <header>
+    <img alt="Vue logo" class="logo" src="@/assets/image/logo.svg"/>
+   </header>
     
       
-      <HelloWorld/>
+      
       <InputForm/>
       <div class="MoviesWatch">
         <RouterLink to="/">Unwatched Movies</RouterLink>
