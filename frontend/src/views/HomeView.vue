@@ -28,4 +28,8 @@ import InputForm from '../components/InputForm.vue';
   justify-content: center;
   gap: 5em;
 }
+.logo{
+  width: 100%;
+  height: 30vh;
+}
 </style>
