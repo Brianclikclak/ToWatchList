@@ -1,6 +1,7 @@
 <script setup>
 import { ref, onBeforeMount } from 'vue';
 import FilmDataService from "../services/FilmDataService";
+import { RouterLink, RouterView } from 'vue-router';
 
 const films = ref([]);
 
@@ -46,8 +47,8 @@ onBeforeMount(() => {
                 <p class="card-text" id="whereToWatch">{{ film.director }}</p>
             </div>
             <div class="card-footer text-muted d-flex justify-content-evenly">
-                <a href="#" class="btn btn-primary">Edit</a>
-                <a href="#" class="btn btn-danger" @click= "() => deleteMovie(film.id)"> Delete</a>
+                <router-link :to="{ name: 'EditCard', params: { id: film.id } }" class="btn btn-primary">Edit</router-link>
+                <a href="#" class="btn btn-danger" @click="deleteMovie(film.id)">Delete</a>
             </div>
         </div>
     </div>
