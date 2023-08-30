@@ -22,6 +22,7 @@ const router = createRouter({
       path: '/edit/:id',
       name:'EditCard',
       component: EditCard
+    
     }
   ]
 })
