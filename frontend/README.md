@@ -11,6 +11,13 @@ npm install
 ```sh
 npm install axios
 ```
+## Recommended Setup
+
+```sh
+VSCode
+Intellij
+XAMPP
+```
 
 ### Compile and Hot-Reload for Development
 
