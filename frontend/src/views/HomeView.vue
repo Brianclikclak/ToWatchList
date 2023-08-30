@@ -18,6 +18,7 @@ import InputForm from '../components/InputForm.vue';
         <RouterLink to="/about">Watched Movies</RouterLink>
      </div>
       <MovieCard/>
+      
     
   
   </main>
