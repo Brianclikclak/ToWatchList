@@ -48,9 +48,12 @@ function saveFilm() {
     <label for="director">Director</label>
     <input type="text" class="form-control" id="director" placeholder="Director" v-model="film.director">
   </div>
-  <button type="submit" @click="saveFilm"> Add movie </button>
+  <div class="d-flex justify-content-center mt-2">
+    <button type="submit" class="btn btn-warning" @click="saveFilm"> Add movie </button>
+  </div>
 </form>
 </template>
+
 <style scoped>
 
 </style>
