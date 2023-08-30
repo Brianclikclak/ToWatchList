@@ -1,17 +1,11 @@
 <script setup>
-import { ref, onBeforeMount } from 'vue';
-import FilmDataService from "../services/FilmDataService";
-import { useRouter } from 'vue-router';
+  import { ref, onMounted } from 'vue';
+  import FilmDataService from "../services/FilmDataService";
+  
+  
+  const films = ref([]);
 
-const router = useRouter();
-
-function navigateToEdit(id) {
-  router.push({ name: 'EditCard', params: { id } });
-}
-
-const films = ref([]);
-
-const getFilms = async () => {
+  const getFilms = async () => {
   try {
     const response = await FilmDataService.getAll();
     films.value = response.data;
@@ -21,20 +15,31 @@ const getFilms = async () => {
   }
 };
 
-const deleteMovie = async (id) => {
+const saveChanges = async (film) => {
   try {
-    await FilmDataService.delete(id);
-    await getFilms();
+    await FilmDataService.update(film.id, {
+      title: film.title,
+      date: film.date,
+      genre: film.genre,
+      director: film.director,
+    });
+    film.editing = false;
   } catch (error) {
-    console.log(error);
+    console.log('Error updating film:', error);
   }
+
 };
-
-onBeforeMount(getFilms);
-
-</script>
+const startEditing = (film) => {
+  film.editing = true;
+};
+  
+  onMounted(getFilms);
+  
+  
+  </script>
 <template>
     <div>
+      <h2>Edit Film</h2>
         <div v-for="film in films" :key="film.id" class="card text-center w-85 m-3">
             <div class="card-header">
                 {{ film.title }}
@@ -45,8 +50,9 @@ onBeforeMount(getFilms);
                 <p class="card-text" id="whereToWatch">{{ film.director }}</p>
             </div>
             <div class="card-footer text-muted d-flex justify-content-evenly">
-                <button class="btn btn-primary" @click="navigateToEdit(film.id)">Edit</button>
-                <a href="#" class="btn btn-danger" v-if="!film.editing" @click="deleteMovie(film.id)">Delete</a>
+                <button v-if="!film.editing" class="btn btn-primary" @click="startEditing(film)">Edit</button>
+                <button v-else class="btn btn-primary" @click="saveChanges(film)">Save</button>
+                
             </div>
             <div v-if="film.editing" class="card-footer text-muted d-flex justify-content-evenly">
                 <input type="text" v-model="film.title" class="form-control">
@@ -57,10 +63,6 @@ onBeforeMount(getFilms);
         </div>
     </div>
 </template>
-
-<style>
-
-</style>
-
-
-
+  
+  
+  

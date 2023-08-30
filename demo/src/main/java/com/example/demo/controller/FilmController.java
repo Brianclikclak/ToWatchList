@@ -2,11 +2,10 @@ package com.example.demo.controller;
 
 import java.util.List;
 import java.util.Optional;
-import java.util.stream.Collectors;
-import java.util.stream.StreamSupport;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -19,9 +18,9 @@ import com.example.demo.models.Film;
 import com.example.demo.services.FilmService;
 
 @RestController
-@RequestMapping
+@RequestMapping("/films")
+@CrossOrigin(origins = "http://localhost:5173")
 
-@Controller
 public class FilmController {
 
     @Autowired
@@ -39,22 +38,19 @@ public class FilmController {
     }
 
     @GetMapping
-    public List<Film> readAll() {
-        return StreamSupport
-                .stream(filmService.findAll().spliterator(), false)
-                .collect(Collectors.toList());
+    public List<Film> findAll() {
+        return filmService.findAll();
     }
 
     @PutMapping("/{id}")
-    public Film update(@RequestBody Film filmDetails, @PathVariable(value = "id") Long userId) {
+    public Film updateFilmById(@PathVariable Long id, @RequestBody Film filmDetails) {
 
-        filmDetails.setTitle(filmDetails.getTitle());
-        filmDetails.setDate(filmDetails.getDate());
-        filmDetails.setGenre(filmDetails.getGenre());
-        filmDetails.setDirector(filmDetails.getDirector());
+        return filmService.updateFilmById(id, filmDetails);
+    }
 
-        return filmDetails.body(filmService.save(Film.get()));
-
+    @DeleteMapping("/{id}")
+    public void deleteById(@PathVariable Long id) {
+        filmService.deleteById(id);
     }
 
 }
