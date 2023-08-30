@@ -71,6 +71,11 @@ onBeforeMount(getFilms);
     width: 300px;
   }
 
+  .card-header, .card-footer {
+    background-color: rgb(59, 59, 59);
+    color: white;
+  }
+
 </style>
 
 
