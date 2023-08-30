@@ -20,7 +20,10 @@
 
 
 <style scoped>
-
+header{
+  display: flex;
+  justify-content: center;
+}
 .logo{
   width: 100%;
   height: 30vh;
