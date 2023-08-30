@@ -98,7 +98,7 @@ const startEditing = (film) => {
     gap: 16px;
   }
 
-  input {
+  input, select {
     text-align: center;
   }
 
