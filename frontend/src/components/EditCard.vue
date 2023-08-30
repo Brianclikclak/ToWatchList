@@ -21,7 +21,7 @@ const saveChanges = async (film) => {
       title: film.title,
       date: film.date,
       genre: film.genre,
-      director: film.director,
+      whereToWatch: film.whereToWatch,
     });
     film.editing = false;
   } catch (error) {
@@ -54,11 +54,11 @@ const startEditing = (film) => {
                 <button v-else class="btn btn-primary" @click="saveChanges(film)">Save</button>
                 
             </div>
-            <div v-if="film.editing" class="card-footer text-muted d-flex justify-content-evenly">
+            <div  class="card-footer text-muted d-flex justify-content-evenly">
                 <input type="text" v-model="film.title" class="form-control">
                 <input type="text" v-model="film.date" class="form-control">
                 <input type="text" v-model="film.genre" class="form-control">
-                <input type="text" v-model="film.director" class="form-control">
+                <input type="text" v-model="film.whereToWatch" class="form-control">
             </div>
         </div>
     </div>

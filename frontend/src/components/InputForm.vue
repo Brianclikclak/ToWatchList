@@ -15,7 +15,7 @@ function saveFilm() {
         title: film.title,
         date: film.date,
         genre: film.genre,
-        director: film.whereToWatch
+        whereToWatch: film.whereToWatch
     };
     
     FilmDataService.create(data)
@@ -45,8 +45,8 @@ function saveFilm() {
     <input type="text" class="form-control" id="genre" placeholder="Genre" v-model="film.genre">
   </div>
   <div class="form-group">
-    <label for="director">Where To Watch</label>
-    <input type="text" class="form-control" id="whereToWatch" placeholder="Where to Watch" v-model="film.whereToWatch">
+    <label for="director">whereToWatch</label>
+    <input type="text" class="form-control" id="whereToWatch" placeholder="whereToWatch" v-model="film.whereToWatch">
   </div>
   <button type="submit" @click="saveFilm"> Add movie </button>
 </form>
