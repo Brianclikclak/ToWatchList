@@ -37,9 +37,14 @@ const startEditing = (film) => {
   
   
   </script>
+
+
 <template>
     <div>
-      <h2>Edit Film</h2>
+        <div>
+          <RouterLink to="/"><button type="button" class="btn btn-dark">Go Back</button></RouterLink>
+        </div>
+        <h2 class="d-flex justify-content-center">Edit Film</h2>
         <div v-for="film in films" :key="film.id" class="card text-center w-85 m-3">
             <div class="card-header">
                 {{ film.title }}
@@ -54,7 +59,11 @@ const startEditing = (film) => {
                 <button v-else class="btn btn-primary" @click="saveChanges(film)">Save</button>
                 
             </div>
+
             <div  class="card-footer text-muted d-flex justify-content-evenly">
+
+            <div v-if="film.editing" class="edit-form card-footer text-muted d-flex justify-content-evenly">
+
                 <input type="text" v-model="film.title" class="form-control">
                 <input type="text" v-model="film.date" class="form-control">
                 <input type="text" v-model="film.genre" class="form-control">
@@ -64,5 +73,25 @@ const startEditing = (film) => {
     </div>
 </template>
   
+
+<style scoped>
+    
+  .card-header, .card-footer {
+    background-color: rgb(59, 59, 59);
+    color: white;
+  }
+
+  .edit-form {
+    display: flex;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+    gap: 16px;
+  }
+
+  input {
+    text-align: center;
+  }
+
+</style>
   
   
