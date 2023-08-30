@@ -8,14 +8,14 @@ const film = reactive({
     title: "",
     date: "",
     genre: "",
-    director: "",
+    whereToWatch: "",
 })
 function saveFilm() {
     let data = {
         title: film.title,
         date: film.date,
         genre: film.genre,
-        director: film.director
+        whereToWatch: film.whereToWatch
     };
     
     FilmDataService.create(data)
@@ -45,8 +45,8 @@ function saveFilm() {
     <input type="text" class="form-control" id="genre" placeholder="Genre" v-model="film.genre">
   </div>
   <div class="form-group">
-    <label for="director">Director</label>
-    <input type="text" class="form-control" id="director" placeholder="Director" v-model="film.director">
+    <label for="director">whereToWatch</label>
+    <input type="text" class="form-control" id="whereToWatch" placeholder="whereToWatch" v-model="film.whereToWatch">
   </div>
   <div class="d-flex justify-content-center mt-2">
     <button type="submit" class="btn btn-warning" @click="saveFilm"> Add movie </button>

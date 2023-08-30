@@ -50,7 +50,7 @@ public class FilmServiceImpl implements FilmService {
             film.setTitle(filmDetails.getTitle());
             film.setDate(filmDetails.getDate());
             film.setGenre(filmDetails.getGenre());
-            film.setDirector(filmDetails.getDirector());
+            film.setWhereToWatch(filmDetails.getWhereToWatch());
             return save(film);
         } else {
 
