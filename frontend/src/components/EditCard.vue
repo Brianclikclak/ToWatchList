@@ -37,6 +37,8 @@ const startEditing = (film) => {
   
   
   </script>
+
+
 <template>
     <div>
       <h2>Edit Film</h2>
@@ -54,7 +56,7 @@ const startEditing = (film) => {
                 <button v-else class="btn btn-primary" @click="saveChanges(film)">Save</button>
                 
             </div>
-            <div v-if="film.editing" class="card-footer text-muted d-flex justify-content-evenly">
+            <div v-if="film.editing" class="edit-form card-footer text-muted d-flex justify-content-evenly">
                 <input type="text" v-model="film.title" class="form-control">
                 <input type="text" v-model="film.date" class="form-control">
                 <input type="text" v-model="film.genre" class="form-control">
@@ -64,5 +66,25 @@ const startEditing = (film) => {
     </div>
 </template>
   
+
+<style scoped>
+    
+  .card-header, .card-footer {
+    background-color: rgb(59, 59, 59);
+    color: white;
+  }
+
+  .edit-form {
+    display: flex;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+    gap: 16px;
+  }
+
+  input {
+    text-align: center;
+  }
+
+</style>
   
   
