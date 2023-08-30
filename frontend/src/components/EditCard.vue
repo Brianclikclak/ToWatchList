@@ -78,6 +78,8 @@ const startEditing = (film) => {
                 </select>
             </div>
           </div>
+         </div> 
+        </div>
     </div>
 </template>
   

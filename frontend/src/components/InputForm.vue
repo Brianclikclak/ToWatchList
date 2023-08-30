@@ -38,15 +38,15 @@ function saveFilm() {
 <template>
   <form >
   <div class="form-group">
-    <label for="title">Title:</label>
+    <!-- <label for="title">Title:</label> -->
     <input type="text" class="form-control" id="title" placeholder="Title" v-model="film.title">
   </div>
   <div class="form-group">
-    <label for="date">Date</label>
+    <!-- <label for="date">Date</label> -->
     <input type="text" class="form-control" id="date" placeholder="Year" v-model="film.date">
   </div>
   <div class="form-group">
-    <label for="genre">Genre</label>
+   <!--  <label for="genre">Genre</label> -->
     <select class="form-control" id="genre" v-model="film.selectedGenre">
         <option value="" disabled>Select a genre</option>
         <option v-for="genre in film.genres" :value="genre" :key="genre">{{ genre }}</option>
@@ -54,17 +54,14 @@ function saveFilm() {
 </div>
   <div class="form-group">
 
-    <label for="whereToWatch">Where to Watch</label>
+    <!-- <label for="whereToWatch">Where to Watch</label> -->
     <select class="form-control" id="whereToWatch" v-model="film.selectedWheretoWatch">
         <option value="" disabled>Select an option</option>
         <option v-for="whereToWatch in film.whereToWatchOptions" :value="whereToWatch" :key="whereToWatch">{{ whereToWatch }}</option>
     </select>
 </div>
-  <button type="submit" @click="saveFilm"> Add movie </button>
-
-    <label for="director">whereToWatch</label>
-    <input type="text" class="form-control" id="whereToWatch" placeholder="whereToWatch" v-model="film.whereToWatch">
-  </div>
+  
+  
   <div class="d-flex justify-content-center mt-2">
     <button type="submit" class="btn btn-warning" @click="saveFilm"> Add movie </button>
   </div>
@@ -74,4 +71,17 @@ function saveFilm() {
 
 <style scoped>
 
+input, select{
+  width: 65%;
+  margin: auto;
+  text-align: center;
+}
+
+form{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 1em;
+  margin-top: 1em;
+}
 </style>
