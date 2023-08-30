@@ -2,6 +2,8 @@
 import { ref, onBeforeMount } from 'vue';
 import FilmDataService from "../services/FilmDataService";
 import { useRouter } from 'vue-router';
+import { genreColors } from '../GenreColors';
+
 
 const router = useRouter();
 
@@ -39,7 +41,7 @@ onBeforeMount(getFilms);
             <div class="card-header">
                 {{ film.title }}
             </div>
-            <div class="card-body">
+            <div :class="['card-body', genreColors[film.genre]]">
                 <p class="card-text" id="year">{{ film.date }}</p>
                 <p class="card-text" id="genre">{{ film.genre }}</p>
                 <p class="card-text" id="whereToWatch">{{ film.whereToWatch }}</p>
@@ -59,6 +61,9 @@ onBeforeMount(getFilms);
 </template>
 
 <style>
+
+  @import '../assets/bg-colors.css';
+  
 
 </style>
 
