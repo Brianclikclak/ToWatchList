@@ -33,8 +33,9 @@ const deleteMovie = async (id) => {
 onBeforeMount(getFilms);
 
 </script>
+
 <template>
-    <div>
+    <div id="card-container">
         <div v-for="film in films" :key="film.id" class="card text-center w-85 m-3">
             <div class="card-header">
                 {{ film.title }}
@@ -58,7 +59,22 @@ onBeforeMount(getFilms);
     </div>
 </template>
 
-<style>
+<style scoped>
+    
+  #card-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .card {
+    width: 300px;
+  }
+
+  .card-header, .card-footer {
+    background-color: rgb(59, 59, 59);
+    color: white;
+  }
 
 </style>
 

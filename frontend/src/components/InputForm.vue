@@ -53,6 +53,7 @@ function saveFilm() {
     </select>
 </div>
   <div class="form-group">
+
     <label for="whereToWatch">Where to Watch</label>
     <select class="form-control" id="whereToWatch" v-model="film.selectedWheretoWatch">
         <option value="" disabled>Select an option</option>
@@ -60,8 +61,17 @@ function saveFilm() {
     </select>
 </div>
   <button type="submit" @click="saveFilm"> Add movie </button>
+
+    <label for="director">whereToWatch</label>
+    <input type="text" class="form-control" id="whereToWatch" placeholder="whereToWatch" v-model="film.whereToWatch">
+  </div>
+  <div class="d-flex justify-content-center mt-2">
+    <button type="submit" class="btn btn-warning" @click="saveFilm"> Add movie </button>
+  </div>
+
 </form>
 </template>
+
 <style scoped>
 
 </style>
