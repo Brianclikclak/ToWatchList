@@ -13,7 +13,6 @@
         background: linear-gradient(to top right, rgba(2,0,36,1) 0%, rgba(9,12,121,0.8) 46%, rgba(0,212,255) 100%); 
         background-attachment: fixed;
         background-size: cover;
-        background-repeat: repeat;
     }
 
     @media only screen and (max-width: 1700px) {
