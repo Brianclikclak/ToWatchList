@@ -1,70 +1,68 @@
 <script setup>
-import { ref, onBeforeMount } from 'vue';
-import { useRoute, useRouter } from 'vue-router'; 
-import FilmDataService from "../services/FilmDataService";
+  import { ref, onMounted } from 'vue';
+  import FilmDataService from "../services/FilmDataService";
+  
+  
+  const films = ref([]);
 
-const route = useRoute();
-const router = useRouter(); 
+  const getFilms = async () => {
+  try {
+    const response = await FilmDataService.getAll();
+    films.value = response.data;
+    
+  } catch (error) {
+    console.log(error);
+  }
+};
 
-const editedFilm = ref({
-    id: null,
-    title: "",
-    date: "",
-    genre: "",
-    director: ""
-});
+const saveChanges = async (film) => {
+  try {
+    await FilmDataService.update(film.id, {
+      title: film.title,
+      date: film.date,
+      genre: film.genre,
+      director: film.director,
+    });
+    film.editing = false;
+  } catch (error) {
+    console.log('Error updating film:', error);
+  }
 
-onBeforeMount(() => {
-    loadFilmData();
-})
-
-function loadFilmData() {
-    const filmId = route.params.id;
-    FilmDataService.get(filmId)
-        .then(response => {
-            editedFilm.id = response.data.id;
-            editedFilm.title = response.data.title;
-            editedFilm.date = response.data.date;
-            editedFilm.genre = response.data.genre;
-            editedFilm.director = response.data.director;
-        })
-        .catch(error => {
-            console.log(error);
-        });
-}
-
-function saveChanges() {
-    FilmDataService.update(editedFilm.id, editedFilm)
-        .then(response => {
-            router.push({ name: 'Homeview' });
-        })
-        .catch(error => {
-            console.log(error);
-        });
-}
-</script>
-
+};
+const startEditing = (film) => {
+  film.editing = true;
+};
+  
+  onMounted(getFilms);
+  
+  
+  </script>
 <template>
     <div>
-        <h2>Edit Film</h2>
-        <form @submit.prevent>
-            <div class="form-group">
-                <label for="title">Title:</label>
-                <input type="text" class="form-control" id="title" v-model="editedFilm.title">
+      <h2>Edit Film</h2>
+        <div v-for="film in films" :key="film.id" class="card text-center w-85 m-3">
+            <div class="card-header">
+                {{ film.title }}
             </div>
-            <div class="form-group">
-                <label for="genre">Genre:</label>
-                <input type="text" class="form-control" id="genre" v-model="editedFilm.genre">
+            <div class="card-body">
+                <p class="card-text" id="year">{{ film.date }}</p>
+                <p class="card-text" id="genre">{{ film.genre }}</p>
+                <p class="card-text" id="whereToWatch">{{ film.director }}</p>
             </div>
-            <div class="form-group">
-                <label for="date">Date:</label>
-                <input type="text" class="form-control" id="date" v-model="editedFilm.date">
+            <div class="card-footer text-muted d-flex justify-content-evenly">
+                <button v-if="!film.editing" class="btn btn-primary" @click="startEditing(film)">Edit</button>
+                <button v-else class="btn btn-primary" @click="saveChanges(film)">Save</button>
+                
             </div>
-            <div class="form-group">
-                <label for="director">Director:</label>
-                <input type="text" class="form-control" id="director" v-model="editedFilm.director">
+            <div v-if="film.editing" class="card-footer text-muted d-flex justify-content-evenly">
+                <input type="text" v-model="film.title" class="form-control">
+                <input type="text" v-model="film.date" class="form-control">
+                <input type="text" v-model="film.genre" class="form-control">
+                <input type="text" v-model="film.director" class="form-control">
             </div>
-            <button @click="saveChanges">Save</button>
-        </form>
+        </div>
     </div>
 </template>
+  
+  
+  
