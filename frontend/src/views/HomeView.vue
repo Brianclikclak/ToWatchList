@@ -5,25 +5,25 @@
 
 
 <template>
-  <header>
-    <img alt="Vue logo" class="logo" src="@/assets/image/logo.svg"/>
-  </header>
-  
-  <main>
-    <InputForm/>
-    <MovieCard/> 
-  </main>
+  <body>
+    
+    <header>
+      <img alt="Vue logo" class="logo" src="@/assets/image/logo.svg"/>
+    </header>
+    
+    <main>
+      <InputForm/>
+      <MovieCard/> 
+    </main>
+  </body>
 </template>
 
 
 <style scoped>
-.MoviesWatch{
-  display: flex;
-  justify-content: center;
-  gap: 5em;
-}
+
 .logo{
   width: 100%;
   height: 30vh;
 }
+
 </style>
