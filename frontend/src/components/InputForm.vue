@@ -1,21 +1,26 @@
 <script setup>
 import FilmDataService from '../services/FilmDataService';
 import {reactive } from 'vue';
+import {genres, whereToWatchOptions} from '../Options';
 
 
 const film = reactive({
     id: null,
     title: "",
     date: "",
-    genre: "",
-    whereToWatch: "",
+    genres: genres,
+    selectedGenre: "",
+    whereToWatchOptions: whereToWatchOptions,
+    selectedWheretoWatch: "",
 })
+
+
 function saveFilm() {
     let data = {
         title: film.title,
         date: film.date,
-        genre: film.genre,
-        whereToWatch: film.whereToWatch
+        genre: film.selectedGenre,
+        whereToWatch: film.selectedWheretoWatch
     };
     
     FilmDataService.create(data)
@@ -42,15 +47,28 @@ function saveFilm() {
   </div>
   <div class="form-group">
     <label for="genre">Genre</label>
-    <input type="text" class="form-control" id="genre" placeholder="Genre" v-model="film.genre">
-  </div>
+    <select class="form-control" id="genre" v-model="film.selectedGenre">
+        <option value="" disabled>Select a genre</option>
+        <option v-for="genre in film.genres" :value="genre" :key="genre">{{ genre }}</option>
+    </select>
+</div>
   <div class="form-group">
+
+    <label for="whereToWatch">Where to Watch</label>
+    <select class="form-control" id="whereToWatch" v-model="film.selectedWheretoWatch">
+        <option value="" disabled>Select an option</option>
+        <option v-for="whereToWatch in film.whereToWatchOptions" :value="whereToWatch" :key="whereToWatch">{{ whereToWatch }}</option>
+    </select>
+</div>
+  <button type="submit" @click="saveFilm"> Add movie </button>
+
     <label for="director">whereToWatch</label>
     <input type="text" class="form-control" id="whereToWatch" placeholder="whereToWatch" v-model="film.whereToWatch">
   </div>
   <div class="d-flex justify-content-center mt-2">
     <button type="submit" class="btn btn-warning" @click="saveFilm"> Add movie </button>
   </div>
+
 </form>
 </template>
 
