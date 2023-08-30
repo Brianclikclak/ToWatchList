@@ -1,6 +1,7 @@
 <script setup>
   import { ref, onMounted } from 'vue';
   import FilmDataService from "../services/FilmDataService";
+  import { RouterLink } from 'vue-router';
   
   
   const films = ref([]);
@@ -39,7 +40,11 @@ const startEditing = (film) => {
   </script>
 <template>
     <div>
-      <h2>Edit Film</h2>
+      <div>
+        <RouterLink to="/"><button type="button" class="btn btn-dark">Go Back</button></RouterLink>
+      </div>
+      <h2 class="d-flex justify-content-center">Edit Film</h2>
+      
         <div v-for="film in films" :key="film.id" class="card text-center w-85 m-3">
             <div class="card-header">
                 {{ film.title }}
