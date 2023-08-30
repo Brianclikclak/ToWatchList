@@ -3,6 +3,7 @@ import { ref, onBeforeMount } from 'vue';
 import FilmDataService from "../services/FilmDataService";
 import { useRouter } from 'vue-router';
 import { genreColors } from '../GenreColors';
+import '../assets/bg-colors.css';
 
 
 const router = useRouter();
@@ -78,7 +79,7 @@ onBeforeMount(getFilms);
     color: white;
   }
 
-  @import '../assets/bg-colors.css';
+  
   
 
 </style>

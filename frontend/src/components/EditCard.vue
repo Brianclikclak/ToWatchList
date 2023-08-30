@@ -78,6 +78,8 @@ const startEditing = (film) => {
                 </select>
             </div>
           </div>
+         </div> 
+        </div>
     </div>
 </template>
   
@@ -96,7 +98,7 @@ const startEditing = (film) => {
     gap: 16px;
   }
 
-  input {
+  input, select {
     text-align: center;
   }
 
