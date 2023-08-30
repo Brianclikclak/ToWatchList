@@ -42,7 +42,7 @@ onBeforeMount(getFilms);
             <div class="card-body">
                 <p class="card-text" id="year">{{ film.date }}</p>
                 <p class="card-text" id="genre">{{ film.genre }}</p>
-                <p class="card-text" id="whereToWatch">{{ film.director }}</p>
+                <p class="card-text" id="whereToWatch">{{ film.whereToWatch }}</p>
             </div>
             <div class="card-footer text-muted d-flex justify-content-evenly">
                 <button class="btn btn-primary" @click="navigateToEdit(film.id)">Edit</button>
@@ -52,7 +52,7 @@ onBeforeMount(getFilms);
                 <input type="text" v-model="film.title" class="form-control">
                 <input type="text" v-model="film.date" class="form-control">
                 <input type="text" v-model="film.genre" class="form-control">
-                <input type="text" v-model="film.director" class="form-control">
+                <input type="text" v-model="film.whereToWatch" class="form-control">
             </div>
         </div>
     </div>

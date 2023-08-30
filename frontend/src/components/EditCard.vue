@@ -47,7 +47,7 @@ const startEditing = (film) => {
             <div class="card-body">
                 <p class="card-text" id="year">{{ film.date }}</p>
                 <p class="card-text" id="genre">{{ film.genre }}</p>
-                <p class="card-text" id="whereToWatch">{{ film.director }}</p>
+                <p class="card-text" id="whereToWatch">{{ film.whereToWatch }}</p>
             </div>
             <div class="card-footer text-muted d-flex justify-content-evenly">
                 <button v-if="!film.editing" class="btn btn-primary" @click="startEditing(film)">Edit</button>

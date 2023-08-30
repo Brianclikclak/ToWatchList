@@ -24,16 +24,16 @@ public class Film {
     @Column(name = "genre", nullable = false)
     private String genre;
 
-    @Column(name = "director", nullable = false)
-    private String director;
+    @Column(name = "WhereToWatch", nullable = false)
+    private String WhereToWatch;
 
-    public Film(Long id, String title, int date, String genre, String director) {
+    public Film(Long id, String title, int date, String genre, String WhereToWatch) {
         super();
         this.id = id;
         this.title = title;
         this.date = date;
         this.genre = genre;
-        this.director = director;
+        this.WhereToWatch = WhereToWatch;
 
     }
 
@@ -74,12 +74,12 @@ public class Film {
         this.genre = genre;
     }
 
-    public String getDirector() {
-        return director;
+    public String getWhereToWatch() {
+        return WhereToWatch;
     }
 
-    public void setDirector(String director) {
-        this.director = director;
+    public void setWhereToWatch(String WhereToWatch) {
+        this.WhereToWatch = WhereToWatch;
     }
 
 }
