@@ -1,60 +1,66 @@
 <script setup>
 import { ref, onBeforeMount } from 'vue';
 import FilmDataService from "../services/FilmDataService";
-import { RouterLink, RouterView } from 'vue-router';
+import { useRouter } from 'vue-router';
+
+const router = useRouter();
+
+function navigateToEdit(id) {
+  router.push({ name: 'EditCard', params: { id } });
+}
 
 const films = ref([]);
 
-function getFilms() {
-    FilmDataService.getAll()
-        .then(response => {
-            films.value = response.data;
-            console.log(response.data);
-        })
-        .catch(e => {
-            console.log(e);
-        });
-}
+const getFilms = async () => {
+  try {
+    const response = await FilmDataService.getAll();
+    films.value = response.data;
+    
+  } catch (error) {
+    console.log(error);
+  }
+};
 
-function deleteMovie(id){
-    FilmDataService.delete(id)
-      .then(response => {
-        console.log(response);
-        getFilms();
-      })
-      .catch(error => {
-        console.log(error);
-      })
-}
+const deleteMovie = async (id) => {
+  try {
+    await FilmDataService.delete(id);
+    await getFilms();
+  } catch (error) {
+    console.log(error);
+  }
+};
 
-onBeforeMount(() => {
-    getFilms();
-})
-
-
+onBeforeMount(getFilms);
 
 </script>
-
 <template>
     <div>
         <div v-for="film in films" :key="film.id" class="card text-center w-85 m-3">
             <div class="card-header">
                 {{ film.title }}
             </div>
-            <div class="card-body ">
-                <p class="card-text" id="year">{{ film.date}}</p>
+            <div class="card-body">
+                <p class="card-text" id="year">{{ film.date }}</p>
                 <p class="card-text" id="genre">{{ film.genre }}</p>
                 <p class="card-text" id="whereToWatch">{{ film.director }}</p>
             </div>
             <div class="card-footer text-muted d-flex justify-content-evenly">
-                <router-link :to="{ name: 'EditCard', params: { id: film.id } }" class="btn btn-primary">Edit</router-link>
-                <a href="#" class="btn btn-danger" @click="deleteMovie(film.id)">Delete</a>
+                <button class="btn btn-primary" @click="navigateToEdit(film.id)">Edit</button>
+                <a href="#" class="btn btn-danger" v-if="!film.editing" @click="deleteMovie(film.id)">Delete</a>
+            </div>
+            <div v-if="film.editing" class="card-footer text-muted d-flex justify-content-evenly">
+                <input type="text" v-model="film.title" class="form-control">
+                <input type="text" v-model="film.date" class="form-control">
+                <input type="text" v-model="film.genre" class="form-control">
+                <input type="text" v-model="film.director" class="form-control">
             </div>
         </div>
     </div>
-
 </template>
 
 <style>
 
 </style>
+
+
+
